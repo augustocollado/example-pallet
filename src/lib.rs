@@ -36,7 +36,7 @@ pub mod pallet {
     impl<T: Config> Pallet<T> {
 
         #[pallet::call_index(0)]
-        #[pallet::weight(0)]
+        #[pallet::weight(Weight::from(1_000_000))]
         pub fn change_state(origin: OriginFor<T>) -> DispatchResult {
 
             // 1. Validates the origin signature
