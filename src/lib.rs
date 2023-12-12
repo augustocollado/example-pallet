@@ -8,29 +8,16 @@ pub mod pallet {
     use super::*;
     use frame_support::pallet_prelude::{*, ValueQuery};
     use frame_system::pallet_prelude::*;
-    
-    #[pallet::pallet]
-    pub struct Pallet<T>(_);
 
     #[pallet::config]
-    pub trait Config: frame_system::Config {
-        // This pallet emits events
-        type RuntimeEvent: From<Event<Self>> + IsType<<Self as frame_system::Config>::RuntimeEvent>;
-    }
+    pub trait Config: frame_system::Config { }
 
+    #[pallet::pallet]
+    pub struct Pallet<T>(_);
 
     #[pallet::storage]
     #[pallet::getter(fn get_state_value)]
     pub(super) type State<T> = StorageValue<_, bool, ValueQuery>;
-
-    // Pallets use events to inform users when important changes are made.
-    // https://docs.substrate.io/main-docs/build/events-errors/
-    #[pallet::event]
-    #[pallet::generate_deposit(pub(super) fn deposit_event)]
-    pub enum Event<T: Config> {
-        /// Event emitted when the state is changed
-        StateChanged { state: bool }
-    }
 
     #[pallet::call]
     impl<T: Config> Pallet<T> {
@@ -46,8 +33,6 @@ pub mod pallet {
             let new_state = !Self::get_state_value();
             State::<T>::set(new_state);
             
-            // 3. Emit event and finish
-            Self::deposit_event(Event::StateChanged { state: new_state });
             Ok(())
         }
     }
