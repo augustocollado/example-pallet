@@ -1,4 +1,12 @@
+[profile.release]
+panic = "unwind"
+
 [workspace]
 members = [
-    'pallet-example',
+    "pallet-example",
 ]
+
+[workspace.package]
+authors = [ "Tanssi Networks" ]
+repository = "https://github.com/"
+version = "0.0.1"

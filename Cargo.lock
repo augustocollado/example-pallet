@@ -1019,7 +1019,7 @@ dependencies = [
 
 [[package]]
 name = "example-pallet"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "frame-support",
  "frame-system",
@@ -1028,6 +1028,7 @@ dependencies = [
  "sp-core",
  "sp-io",
  "sp-runtime",
+ "sp-std",
 ]
 
 [[package]]
