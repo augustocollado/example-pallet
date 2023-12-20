@@ -12,7 +12,11 @@ pub mod pallet {
     #[pallet::config]
     pub trait Config: frame_system::Config { }
 
-    #[pallet::pallet]
+    const STORAGE_VERSION: frame_support::traits::StorageVersion =
+		frame_support::traits::StorageVersion::new(1);
+
+	#[pallet::pallet]
+	#[pallet::storage_version(STORAGE_VERSION)]
     pub struct Pallet<T>(_);
 
     #[pallet::storage]
